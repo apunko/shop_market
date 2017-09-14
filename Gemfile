@@ -10,7 +10,7 @@ end
 gem 'rails', '~> 5.1.3'
 
 gem 'pg', '0.21.0'
-
+gem 'devise', '4.3.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
