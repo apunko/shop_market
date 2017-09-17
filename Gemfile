@@ -15,6 +15,8 @@ gem 'pg_search', '2.1.0'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails', '4.3.1'
+gem 'administrate', '0.8.1'
+gem 'simple_form', '3.5.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
