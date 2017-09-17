@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  shop: one
+  user: one
+  status: 1
+  price: 1
+
+two:
+  shop: two
+  user: two
+  status: 1
+  price: 1

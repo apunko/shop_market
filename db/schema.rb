@@ -10,10 +10,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917205730) do
+ActiveRecord::Schema.define(version: 20170917221231) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cart_products", force: :cascade do |t|
+    t.bigint "cart_id"
+    t.bigint "product_id"
+    t.bigint "package_id"
+    t.integer "amount", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_products_on_cart_id"
+    t.index ["package_id"], name: "index_cart_products_on_package_id"
+    t.index ["product_id"], name: "index_cart_products_on_product_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_carts_on_shop_id"
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.string "title", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_categories_on_shop_id"
+  end
+
+  create_table "coupons", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.string "title"
+    t.integer "amount"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_coupons_on_shop_id"
+  end
+
+  create_table "order_products", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "order_id"
+    t.bigint "package_id"
+    t.integer "amount", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["order_id"], name: "index_order_products_on_order_id"
+    t.index ["package_id"], name: "index_order_products_on_package_id"
+    t.index ["product_id"], name: "index_order_products_on_product_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "shop_id"
+    t.bigint "user_id"
+    t.integer "status", default: 0
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["shop_id"], name: "index_orders_on_shop_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "packages", force: :cascade do |t|
+    t.bigint "product_id"
+    t.string "title", default: ""
+    t.integer "amount", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_packages_on_product_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "title", default: ""
@@ -50,6 +121,19 @@ ActiveRecord::Schema.define(version: 20170917205730) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "cart_products", "carts"
+  add_foreign_key "cart_products", "packages"
+  add_foreign_key "cart_products", "products"
+  add_foreign_key "carts", "shops"
+  add_foreign_key "carts", "users"
+  add_foreign_key "categories", "shops"
+  add_foreign_key "coupons", "shops"
+  add_foreign_key "order_products", "orders"
+  add_foreign_key "order_products", "packages"
+  add_foreign_key "order_products", "products"
+  add_foreign_key "orders", "shops"
+  add_foreign_key "orders", "users"
+  add_foreign_key "packages", "products"
   add_foreign_key "products", "shops"
   add_foreign_key "shops", "users"
 end
