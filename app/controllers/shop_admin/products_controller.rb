@@ -6,9 +6,13 @@ class ShopAdmin::ProductsController < ApplicationController
   end
 
   def create
+    create_params = product_params
+    create_params[:shop_id] = params[:shop_id]
+    @product = Product.create(create_params)
   end
 
   def update
+    @product.update(product_params)
   end
 
   def edit
@@ -30,5 +34,9 @@ class ShopAdmin::ProductsController < ApplicationController
 
   def set_product
     @product = Product.find(params[:id])
+  end
+
+  def product_params
+    params.require(:product).permit(:title, :description, :category_id, packages_attributes: [:id, :title, :amount, :_destroy])
   end
 end
