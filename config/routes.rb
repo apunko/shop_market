@@ -8,12 +8,12 @@ Rails.application.routes.draw do
   end
 
   resources :shops, only: [:show, :index] do
-    nested do
-      scope :admin do
-        resources :products, only: [:new, :edit, :create, :update, :destroy]
-
+    namespace :shop_admin, path: :admin do
+      resources :products, only: [:new, :edit, :create, :update, :destroy] do
         root to: "products#index"
       end
+
+      root to: "products#index"
     end
     
     resources :products, only: [:show, :index]
