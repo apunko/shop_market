@@ -16,6 +16,7 @@ class ShopAdmin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.packages.build
   end
 
   def destroy

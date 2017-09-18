@@ -2,5 +2,11 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.association :category %>
+  <%= f.simple_fields_for :packages do |package| %>
+    <%= render 'package_fields', f: package %>
+  <% end %>
+  <div class="links">
+    <%= link_to_add_association 'add package', f, :packages %>
+  </div>
   <%= f.button :submit %>
 <% end %>

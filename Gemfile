@@ -17,6 +17,7 @@ gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails', '4.3.1'
 gem 'administrate', '0.8.1'
 gem 'simple_form', '3.5.0'
+gem "cocoon"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
