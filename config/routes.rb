@@ -7,9 +7,17 @@ Rails.application.routes.draw do
     root to: "shops#index"
   end
 
-  # resources :shops, only: [:show, :index] do
-  #   resources :products
-  # end
+  resources :shops, only: [:show, :index] do
+    nested do
+      scope :admin do
+        resources :products, only: [:new, :edit, :create, :update, :destroy]
+
+        root to: "products#index"
+      end
+    end
+    
+    resources :products, only: [:show, :index]
+  end
 
   devise_for :users
 
