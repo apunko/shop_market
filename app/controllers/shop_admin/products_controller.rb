@@ -15,6 +15,7 @@ class ShopAdmin::ProductsController < ApplicationController
   end
 
   def new
+    @product = Product.new
   end
 
   def destroy

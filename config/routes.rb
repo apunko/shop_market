@@ -7,15 +7,18 @@ Rails.application.routes.draw do
     root to: "shops#index"
   end
 
-  resources :shops, only: [:show, :index] do
-    namespace :shop_admin, path: :admin do
+  
+  namespace :shop_admin do
+    resources :shops, only: [:show, :edit, :update] do
       resources :products, only: [:new, :edit, :create, :update, :destroy] do
         root to: "products#index"
       end
 
       root to: "products#index"
     end
-    
+  end
+
+  resources :shops, only: [:show, :index] do
     resources :products, only: [:show, :index]
   end
 

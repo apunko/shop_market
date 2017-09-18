@@ -1,0 +1,6 @@
+<%= simple_form_for [:shop_admin, @shop, @product] do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <%= f.association :category %>
+  <%= f.button :submit %>
+<% end %>
