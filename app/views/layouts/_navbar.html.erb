@@ -12,9 +12,10 @@
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li>
-          <%= link_to "My shop", shop_admin_shops_path %>
-        </li>
+        <li><%= link_to "My shop", shop_admin_shops_path %></li>
+        <% if @shop %>
+          <li><%= link_to 'Cart', shop_carts_path(@shop) %></li>
+        <% end %>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>

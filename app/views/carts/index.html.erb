@@ -1,0 +1,20 @@
+<h1>My cart</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Product</th>
+    <th>Package</th>
+    <th>Amount</th>
+    <th>Add more</th>
+    <th>Remove</th>
+  </tr>
+  <% @cart.cart_products.each do |cart_product| %>
+    <tr>
+      <td><%= cart_product.product.title %></td>
+      <td><%= cart_product.package.title %></td>
+      <td><%= cart_product.amount %></td>
+      <td>Add more</td>
+      <td>Remove</td>
+    </tr>
+  <% end %>
+</table>

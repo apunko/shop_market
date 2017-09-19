@@ -3,14 +3,12 @@ class CartProductsController < ApplicationController
   before_action :set_cart, only: :create
 
   def create
-    binding.pry
     product = @shop.products.find(params[:cart_product][:product_id])
     package = product.packages.find(params[:cart_product][:package_id])
 
-    binding.pry
     if @cart
       cart_product = @cart.add_product(product, package, params[:amount])
-      if @cart_product.save
+      if cart_product.save
         flash[:notice] = "Product was added!"
         redirect_to(request.referrer || product_path(product))
       else
@@ -18,10 +16,8 @@ class CartProductsController < ApplicationController
         redirect_to(request.referrer || product_path(product))
       end
     else
-      binding.pry
       cart_product = CartProduct.new(cart_product_params)
-      session[:shops][@shop.title][:cart_products] << cart_product
-      binding.pry
+      session[:shops][@shop.title] << cart_product
     end
   end
 
@@ -38,12 +34,16 @@ class CartProductsController < ApplicationController
     if current_user
       @cart = Cart.find_by(user_id: current_user.id, shop_id: @shop.id)
       unless @cart
-        @cart = Cart.create(user_id: current_user.id, shop_id: @shop.id)
+        @cart = Cart.new(user_id: current_user.id, shop_id: @shop.id)
+        session[:shops][@shop.title].each do |cart_product_params|
+          @cart.cart_products << CartProduct.new(cart_product_params) 
+        end
+        @cart.save
+        session[:shops][@shop.title] = nil
       end 
     else
       session[:shops] ||= {}
-      session[:shops][@shop.title] ||= {}
-      session[:shops][@shop.title][:cart_products] ||= []
+      session[:shops][@shop.title] ||= []
     end
   end
 
