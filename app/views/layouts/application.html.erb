@@ -10,8 +10,10 @@
 
   <body>
     <%= render "layouts/navbar" %>
-    <%= render "layouts/flash" %>
-    <%= yield %>
-    <div id="remote_container"></div>
+      <div class="main_content">
+        <%= render "layouts/flash" %>
+        <%= yield %>
+        <div id="remote_container"></div>
+      </div>
   </body>
 </html>
