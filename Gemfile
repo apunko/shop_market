@@ -17,14 +17,14 @@ gem 'sass-rails', '>= 3.2'
 gem 'jquery-rails', '4.3.1'
 gem 'administrate', '0.8.1'
 gem 'simple_form', '3.5.0'
-gem "cocoon"
+gem "cocoon", "1.2.10"
 gem 'pry-rails', '0.3.6'
 gem 'carrierwave', '~> 1.0'
-gem 'rails-gallery'
-gem 'filterrific'
-gem 'kaminari'
-gem "pundit"
-gem 'devise-bootstrapped'
+gem 'rails-gallery', '0.3.3'
+gem 'filterrific', '2.1.2'
+gem 'kaminari', '1.0.1'
+gem "pundit", '1.1.0'
+gem 'devise-bootstrapped', '0.1.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
