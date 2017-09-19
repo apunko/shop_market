@@ -1,0 +1,6 @@
+<%= simple_form_for [@shop, @cart_product] do |f| %>
+  <%= f.input :amount %>
+  <%= f.association :product, as: :hidden %>
+  <%= f.association :package, as: :hidden %>
+  <%= f.button :submit %>
+<% end %>

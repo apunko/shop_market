@@ -4,9 +4,13 @@
 <br/>
 <%= @product.description %>
 <br/>
+
+<h2>Packages:</h2>
 <% @product.packages.each do |package| %>
   <p>
     <%= package.title %> - <%= package.amount %>
+    <%= @cart_product = CartProduct.new(product_id: @product.id, package_id: package.id) %>
+    <%= render "cart_products/form"%>
   </p>
 <% end %>
 <div id="thumbs">

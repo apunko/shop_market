@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'cart_products/create'
+
+  get 'cart_products/destroy'
+
   namespace :admin do
     resources :users, only: [:show]
     resources :products, only: [:show]
@@ -24,6 +28,7 @@ Rails.application.routes.draw do
 
   resources :shops, only: [:show, :index] do
     resources :products, only: [:show, :index]
+    resources :cart_products, only: [:create, :destroy]
   end
 
   devise_for :users
