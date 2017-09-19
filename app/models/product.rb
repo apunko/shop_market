@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   include PgSearch
+  mount_uploaders :images, ImageUploader
   belongs_to :shop
   belongs_to :category
   has_many :packages

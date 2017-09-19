@@ -2,6 +2,7 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.association :category %>
+  <%= f.file_field :images, multiple: true %>
   <%= f.simple_fields_for :packages do |package| %>
     <%= render 'package_fields', f: package %>
   <% end %>

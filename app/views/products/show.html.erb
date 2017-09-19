@@ -1,1 +1,18 @@
-Show
+<%= @product.title %>
+<br/>
+<%= @product.category.title %>
+<br/>
+<%= @product.description %>
+<br/>
+<% @product.packages.each do |package| %>
+  <p>
+    <%= package.title %> - <%= package.amount %>
+  </p>
+<% end %>
+<div id="thumbs">
+<% @product.images.each do |image| %>
+  <%= link_to image.url do %>
+    <%= image_tag image.url, size: "120x120" %>
+  <% end %> 
+<% end %>
+</div>

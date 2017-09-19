@@ -19,6 +19,8 @@ gem 'administrate', '0.8.1'
 gem 'simple_form', '3.5.0'
 gem "cocoon"
 gem 'pry-rails', '0.3.6'
+gem 'carrierwave', '~> 1.0'
+gem 'rails-gallery'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
