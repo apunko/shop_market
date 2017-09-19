@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
+  rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+  
   def index
   end
 
@@ -11,7 +12,11 @@ class ApplicationController < ActionController::Base
 
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
-    binding.pry
+    redirect_to(request.referrer || root_path)
+  end
+
+  def record_not_found
+    flash[:alert] = "Sorry, can't find resource."
     redirect_to(request.referrer || root_path)
   end
 end

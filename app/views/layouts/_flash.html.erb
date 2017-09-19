@@ -1,8 +1,8 @@
 <% if flash[:notice] %>
   <div class="alert alert-info" role="alert"><%= flash[:notice] %></div>
 <% end %>
-<% if flash[:message] %>
-  <div class="alert alert-info" role="alert"><%= flash[:message] %></div>
+<% if flash[:alert] %>
+  <div class="alert alert-info" role="alert"><%= flash[:alert] %></div>
 <% end %>
 <% if flash[:error] %>
   <% flash[:error].each do |key, value|%>

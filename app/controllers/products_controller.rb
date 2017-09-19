@@ -9,7 +9,7 @@ class ProductsController < ApplicationController
   def show
   end
 
-  private 
+  private
 
   def initialize_table
     @filterrific = initialize_filterrific(
@@ -29,6 +29,6 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = @shop.products.find(params[:id])
   end
 end
