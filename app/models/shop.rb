@@ -1,4 +1,5 @@
 class Shop < ApplicationRecord
+  include SortableTables
   belongs_to :user
   has_many :products
 

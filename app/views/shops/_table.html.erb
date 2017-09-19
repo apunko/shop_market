@@ -1,0 +1,18 @@
+<div id="filterrific_results">
+  <table class="table table-bordered">
+    <tr>
+      <th><%= filterrific_sorting_link(@filterrific, :title) %></th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+    <% shops.each do |shop| %>
+      <tr>
+        <td><%= link_to shop.title, shop_path(shop) %></td>
+        <td><%= shop.description %></td>
+        <td><%= link_to "Go to products", shop_products_path(shop) %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= paginate shops %>
+</div>

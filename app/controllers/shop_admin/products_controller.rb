@@ -42,7 +42,6 @@ class ShopAdmin::ProductsController < ApplicationController
     @products = @filterrific.find.includes(:category).page(params[:page])
   end
 
-
   def set_shop
     @shop = Shop.find(params[:shop_id])
   end
