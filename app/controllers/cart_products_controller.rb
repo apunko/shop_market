@@ -16,6 +16,10 @@ class CartProductsController < ApplicationController
         redirect_to(request.referrer || product_path(product))
       end
     else
+      session[:shops][@shop.title].reject! do |cart_product|
+        cart_product["product_id"].to_s == cart_product_params[:product_id] && cart_product["package_id"].to_s == cart_product_params[:package_id] 
+      end
+      
       cart_product = CartProduct.new(cart_product_params)
       session[:shops][@shop.title] << cart_product
     end
@@ -26,12 +30,9 @@ class CartProductsController < ApplicationController
       cart_product = @cart.cart_products.find(params[:id])
       cart_product.destroy
     else
-      binding.pry
       session[:shops][@shop.title].reject! do |cart_product|
-        binding.pry
         cart_product["product_id"].to_s == params[:cart_product][:product_id] && cart_product["package_id"].to_s == params[:cart_product][:package_id] 
       end
-      binding.pry
     end
 
     flash[:notice] = "Removed from cart!"
