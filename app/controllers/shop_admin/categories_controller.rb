@@ -45,7 +45,7 @@ class ShopAdmin::CategoriesController < ApplicationController
       persistence_id: 'shared_key'
     ) or return
 
-    @categories = @filterrific.find.page(params[:page])
+    @categories = @filterrific.find.where(shop_id: @shop.id).page(params[:page])
   end
 
   def set_shop
