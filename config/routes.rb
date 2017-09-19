@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   
   namespace :shop_admin do
-    resources :shops, only: [:show, :edit, :update] do
+    resources :shops, only: [:show, :edit, :update, :create, :new] do
       resources :products, only: [:new, :edit, :create, :update, :destroy] do
         root to: "products#index"
       end
