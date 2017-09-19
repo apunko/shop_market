@@ -1,5 +1,5 @@
 <% if current_user %>
-  <%= link_to "Remove", shop_cart_path(@shop, cart_product), method: :delete %>
+  <%= link_to "Remove", shop_cart_product_path(@shop, cart_product), method: :delete, class: "btn btn-danger" %>
 <% else %>
   <%= simple_form_for [@shop, cart_product], method: :delete  do |f| %>
     <%= f.association :product, as: :hidden %>

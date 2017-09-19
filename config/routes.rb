@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   resources :shops, only: [:show, :index] do
     resources :products, only: [:show, :index]
-    resources :cart_products, only: [:create, :destroy]
+    resources :cart_products, only: [:create, :destroy, :update]
     resources :carts, only: :index
 
     delete '/cart_products', to: "cart_products#destroy"

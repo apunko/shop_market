@@ -19,6 +19,7 @@ class CartsController < ApplicationController
       @cart = Cart.find_by(user_id: current_user.id, shop_id: @shop.id)
       unless @cart
         @cart = Cart.new(user_id: current_user.id, shop_id: @shop.id)
+        binding.pry
         session[:shops][@shop.title].each do |cart_product_params|
           @cart.cart_products << CartProduct.new(cart_product_params)   
         end

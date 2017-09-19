@@ -1,6 +1,13 @@
 class CartProductsController < ApplicationController
   before_action :set_shop
-  before_action :set_cart, only: [:create, :destroy]
+  before_action :set_cart, only: [:create, :destroy, :update]
+  before_action :set_cart_product, only: :update
+
+  def update
+    @cart_product.update(update_cart_product_params)
+
+    redirect_to shop_carts_path
+  end
 
   def create
     product = @shop.products.find(params[:cart_product][:product_id])
@@ -19,7 +26,7 @@ class CartProductsController < ApplicationController
       session[:shops][@shop.title].reject! do |cart_product|
         cart_product["product_id"].to_s == cart_product_params[:product_id] && cart_product["package_id"].to_s == cart_product_params[:package_id] 
       end
-      
+
       cart_product = CartProduct.new(cart_product_params)
       session[:shops][@shop.title] << cart_product
     end
@@ -62,7 +69,15 @@ class CartProductsController < ApplicationController
     end
   end
 
+  def set_cart_product
+    @cart_product = @cart.cart_products.find(params[:id])
+  end
+
   def cart_product_params
     params.require(:cart_product).permit(:product_id, :package_id, :amount)
+  end
+
+  def update_cart_product_params
+    params.require(:cart_product).permit(:amount)
   end
 end
