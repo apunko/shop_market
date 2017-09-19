@@ -18,7 +18,7 @@ Rails.application.routes.draw do
         root to: "categories#index"
       end
 
-      root to: "products#index"
+      root to: "shops#new"
     end
   end
 
