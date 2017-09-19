@@ -1,0 +1,16 @@
+<div id="filterrific_results">
+  <table class="table table-bordered">
+    <tr>
+      <th><%= filterrific_sorting_link(@filterrific, :title) %></th>
+      <th>Id</th>
+    </tr>
+    <% categories.each do |category| %>
+      <tr>
+        <td><%= category.title %></td>
+        <td><%= category.id %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= paginate categories %>

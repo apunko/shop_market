@@ -21,6 +21,8 @@ gem "cocoon"
 gem 'pry-rails', '0.3.6'
 gem 'carrierwave', '~> 1.0'
 gem 'rails-gallery'
+gem 'filterrific'
+gem 'kaminari'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 

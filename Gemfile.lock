@@ -56,6 +56,9 @@ GEM
       execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-kaminari-views (0.0.5)
+      kaminari (>= 0.13)
+      rails (>= 3.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -95,6 +98,7 @@ GEM
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
+    filterrific (2.1.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     hashie (3.5.6)
@@ -250,6 +254,7 @@ PLATFORMS
 
 DEPENDENCIES
   administrate (= 0.8.1)
+  bootstrap-kaminari-views
   bootstrap-sass (~> 3.3.6)
   byebug
   capybara (~> 2.13)
@@ -257,8 +262,10 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise (= 4.3.0)
+  filterrific
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.1)
+  kaminari
   listen (>= 3.0.5, < 3.2)
   pg (= 0.21.0)
   pg_search (= 2.1.0)
