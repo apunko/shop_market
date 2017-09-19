@@ -23,6 +23,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'rails-gallery'
 gem 'filterrific'
 gem 'kaminari'
+gem "pundit"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 
