@@ -1,0 +1,24 @@
+<div id="filterrific_results">
+  <div><%= link_to "Add product", new_shop_admin_shop_product_path(@shop), remote: true, class: "btn btn-primary" %></div>
+
+  <table class="table table-bordered">
+    <tr>
+      <th><%= filterrific_sorting_link(@filterrific, :title) %></th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    </tr>
+    <% products.each do |product| %>
+      <tr>
+        <td><%= link_to product.title, [@shop, product] %></td>
+        <td><%= product.description %></td>
+        <td><%= product.category %></td>
+        <td><%= link_to "Edit", edit_shop_admin_shop_product_path(@shop, product), class: "btn btn-primary" %></td>
+        <td><%= link_to "Destroy", shop_admin_shop_product_path(@shop, product), remote: true, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <%= paginate products %>
+</div>

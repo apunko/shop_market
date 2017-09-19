@@ -11,10 +11,9 @@ module SortableTables
 
     scope :sorted_by, lambda { |sort_key|
       direction = (sort_key =~ /desc$/) ? 'desc' : 'asc'
-
       case sort_key.to_s
       when /^title_/
-        order("categories.title #{ direction }")
+        order("#{self.name.pluralize.downcase}.title #{ direction }")
       else
         raise(ArgumentError, "Invalid sort option: #{ sort_key.inspect }")
       end
