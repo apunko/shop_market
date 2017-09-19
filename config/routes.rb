@@ -14,7 +14,7 @@ Rails.application.routes.draw do
         root to: "products#index"
       end
 
-      resources :categories, only: [:index, :create, :update, :destory] do
+      resources :categories do
         root to: "categories#index"
       end
 

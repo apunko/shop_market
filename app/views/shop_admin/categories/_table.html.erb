@@ -1,16 +1,24 @@
+<div><%= link_to "Add category", new_shop_admin_shop_category_path(@shop), remote: true, class: "btn btn-primary" %></div>
+
 <div id="filterrific_results">
   <table class="table table-bordered">
     <tr>
       <th><%= filterrific_sorting_link(@filterrific, :title) %></th>
       <th>Id</th>
+      <th>Product amount</th>
+      <th>Edit</th>
+      <th>Destroy</th>
     </tr>
     <% categories.each do |category| %>
       <tr>
         <td><%= category.title %></td>
         <td><%= category.id %></td>
+        <td><%= category.products.count %></td>
+        <td><%= link_to "Edit", edit_shop_admin_shop_category_path(@shop, category), remote: true, class: "btn btn-primary" %></td>
+        <td><%= link_to "Destroy", shop_admin_shop_category_path(@shop, category), remote: true, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } unless category.products.any? %></td>
       </tr>
     <% end %>
   </table>
-</div>
 
-<%= paginate categories %>
+  <%= paginate categories %>
+</div>

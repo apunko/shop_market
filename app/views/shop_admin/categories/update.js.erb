@@ -1,0 +1,5 @@
+$('#category_modal').modal('hide');
+<% js = escape_javascript(
+  render(partial: 'table', locals: { categories: @categories })
+) %>
+$("#filterrific_results").html("<%= js %>");

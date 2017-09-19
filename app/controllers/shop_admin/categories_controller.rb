@@ -1,23 +1,20 @@
 class ShopAdmin::CategoriesController < ApplicationController
   before_action :set_shop
-  before_action :set_category, only: [:destroy, :update]
+  before_action :set_category, only: [:destroy, :update, :edit]
+  before_action :initialize_table, only: [:index, :update, :create, :destroy]
 
   def index
-    @filterrific = initialize_filterrific(
-      Category,
-      params[:filterrific],
-      select_options: {
-        sorted_by: Category.options_for_sorted_by,
-      },
-      persistence_id: 'shared_key'
-    ) or return
-
-    @categories = @filterrific.find.page(params[:page])
-
     respond_to do |format|
       format.html
       format.js
     end
+  end
+
+  def new
+    @category = Category.new
+  end
+
+  def edit
   end
 
   def create
@@ -35,6 +32,19 @@ class ShopAdmin::CategoriesController < ApplicationController
   end
 
   private 
+
+  def initialize_table
+    @filterrific = initialize_filterrific(
+      Category,
+      params[:filterrific],
+      select_options: {
+        sorted_by: Category.options_for_sorted_by,
+      },
+      persistence_id: 'shared_key'
+    ) or return
+
+    @categories = @filterrific.find.page(params[:page])
+  end
 
   def set_shop
     @shop = Shop.find(params[:shop_id])

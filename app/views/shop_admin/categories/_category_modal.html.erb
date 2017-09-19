@@ -1,0 +1,25 @@
+<div class="modal fade" id="category_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%= simple_form_for  [:shop_admin, @shop, @category], remote: true do |f| %>
+        <div class="modal-body">
+          <div class="form-inputs">
+            <%= f.input :title %>
+          </div>
+        </div>
+        <div class="modal-footer">  
+          <div class="form-actions">
+            <%= f.button :submit, class: 'btn btn-primary' %>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>  
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

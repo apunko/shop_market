@@ -1,5 +1,6 @@
 class Category < ApplicationRecord
   belongs_to :shop
+  has_many :products
   paginates_per 1
   
   filterrific(
