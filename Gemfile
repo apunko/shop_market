@@ -24,6 +24,7 @@ gem 'rails-gallery'
 gem 'filterrific'
 gem 'kaminari'
 gem "pundit"
+gem 'devise-bootstrapped'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 

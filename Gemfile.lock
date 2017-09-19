@@ -92,6 +92,7 @@ GEM
       railties (>= 4.1.0, < 5.2)
       responders
       warden (~> 1.2.3)
+    devise-bootstrapped (0.1.1)
     erubi (1.6.1)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -260,6 +261,7 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise (= 4.3.0)
+  devise-bootstrapped
   filterrific
   jbuilder (~> 2.5)
   jquery-rails (= 4.3.1)
