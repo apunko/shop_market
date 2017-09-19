@@ -1,6 +1,6 @@
-<%= simple_form_for [@shop, @cart_product] do |f| %>
-  <%= f.input :amount %>
+<%= simple_form_for [@shop, cart_product], :html=> { class: 'form-inline' }  do |f| %>
+  <%= f.input :amount, label: false %>
   <%= f.association :product, as: :hidden %>
   <%= f.association :package, as: :hidden %>
-  <%= f.button :submit %>
+  <%= f.submit submit_button_title, class: "btn btn-primary" %>
 <% end %>

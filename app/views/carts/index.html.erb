@@ -5,16 +5,18 @@
     <th>Product</th>
     <th>Package</th>
     <th>Amount</th>
-    <th>Add more</th>
-    <th>Remove</th>
+    <th></th>
   </tr>
   <% @cart.cart_products.each do |cart_product| %>
     <tr>
       <td><%= cart_product.product.title %></td>
       <td><%= cart_product.package.title %></td>
-      <td><%= cart_product.amount %></td>
-      <td>Add more</td>
-      <td>Remove</td>
+      <td>
+        <%= render(partial: "cart_products/form", locals: { cart_product: cart_product, submit_button_title: "Update" }) %>
+      </td>
+      <td>
+        <%= render(partial: "cart_products/remove_button", locals: { cart_product: cart_product }) %>
+      </td>
     </tr>
   <% end %>
 </table>

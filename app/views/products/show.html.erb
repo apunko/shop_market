@@ -9,8 +9,7 @@
 <% @product.packages.each do |package| %>
   <p>
     <%= package.title %> - <%= package.amount %>
-    <%= @cart_product = CartProduct.new(product_id: @product.id, package_id: package.id) %>
-    <%= render "cart_products/form"%>
+    <%= render(partial: "cart_products/form", locals: { cart_product: CartProduct.new(product_id: @product.id, package_id: package.id), submit_button_title: "Add to cart" }) %>
   </p>
 <% end %>
 <div id="thumbs">

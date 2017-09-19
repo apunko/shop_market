@@ -1,6 +1,6 @@
 class CartProductsController < ApplicationController
   before_action :set_shop
-  before_action :set_cart, only: :create
+  before_action :set_cart, only: [:create, :destroy]
 
   def create
     product = @shop.products.find(params[:cart_product][:product_id])
@@ -22,6 +22,20 @@ class CartProductsController < ApplicationController
   end
 
   def destroy
+    if current_user
+      cart_product = @cart.cart_products.find(params[:id])
+      cart_product.destroy
+    else
+      binding.pry
+      session[:shops][@shop.title].reject! do |cart_product|
+        binding.pry
+        cart_product["product_id"].to_s == params[:cart_product][:product_id] && cart_product["package_id"].to_s == params[:cart_product][:package_id] 
+      end
+      binding.pry
+    end
+
+    flash[:notice] = "Removed from cart!"
+    redirect_to shop_carts_path
   end
 
   private 

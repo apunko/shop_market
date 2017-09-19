@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     resources :products, only: [:show, :index]
     resources :cart_products, only: [:create, :destroy]
     resources :carts, only: :index
+
+    delete '/cart_products', to: "cart_products#destroy"
   end
 
   devise_for :users
