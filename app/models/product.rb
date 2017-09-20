@@ -5,8 +5,10 @@ class Product < ApplicationRecord
   mount_uploaders :images, ImageUploader
   belongs_to :shop
   belongs_to :category
-  has_many :packages
+  has_many :packages, dependent: :destroy
   accepts_nested_attributes_for :packages, allow_destroy: true
+
+  before_create :package_check
 
   paginates_per 10
 
@@ -21,4 +23,10 @@ class Product < ApplicationRecord
   scope :with_category_id, lambda { |category_ids|
     where(category_id: [*category_ids])
   }
+
+  private 
+
+  def package_check
+    self.packages << Package.new(title: self.title) unless self.packages.any?
+  end
 end

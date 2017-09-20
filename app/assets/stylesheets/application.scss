@@ -5,6 +5,11 @@
 @import 'gallery/slideshow';
 @import 'gallery/galleria/classic';
 @import 'gallery/touch_touch';
+@import 'shops';
+
+.nav-stacked li a{
+  padding-left: 40px;
+}
 
 #thumbs {
   a {
@@ -74,11 +79,11 @@ div.main_content {
   margin-right: 20px;
 }
 
-#category_modal div h5 {
+.modal div h5 {
   font-size: 20px;
   display: inline-block;
 }
 
-#category_modal div button span {
+.modal div button span {
   font-size: 30px;
 }

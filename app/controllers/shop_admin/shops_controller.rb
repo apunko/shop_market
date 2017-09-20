@@ -3,6 +3,8 @@ class ShopAdmin::ShopsController < ApplicationController
   before_action :check_shop_existence, only: [:new, :create]
   before_action :set_shop, only: [:show, :edit, :update]
 
+  layout "shop_admin"
+
   def show
   end
 
