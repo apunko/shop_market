@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20170920085041) do
     t.integer "amount", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
     t.index ["product_id"], name: "index_packages_on_product_id"
   end
 

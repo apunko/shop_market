@@ -8,7 +8,8 @@ class CartProductsController < ApplicationController
   def update
     @cart_product.update(update_cart_product_params)
 
-    redirect_to shop_carts_path
+    flash[:notice] = "Cart product updated!"
+    redirect_to shop_carts_path(@shop)
   end
 
   def create
@@ -33,7 +34,8 @@ class CartProductsController < ApplicationController
       session[:shops][@shop.title] << cart_product
     end
 
-    redirect_to shop_carts_path
+    flash[:notice] = "Added to cart!"
+    redirect_to shop_carts_path(@shop)
   end
 
   def destroy
@@ -47,7 +49,7 @@ class CartProductsController < ApplicationController
     end
 
     flash[:notice] = "Removed from cart!"
-    redirect_to shop_carts_path
+    redirect_to shop_carts_path(@shop)
   end
 
   private 

@@ -1,5 +1,5 @@
 class AddRoleToUsers < ActiveRecord::Migration[5.1]
   def change
-    add_column :packages, :lock_version, :integer
+    add_column :users, :role, :integer, default: 0
   end
 end

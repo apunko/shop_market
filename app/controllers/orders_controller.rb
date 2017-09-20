@@ -1,7 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_shop
   before_action :set_order, only: :show
-  
+
   def new
   end
 
@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
   end
 
   def set_order
-    @order = shop.orders.find(params[:id])
+    @order = @shop.orders.find(params[:id])
   end
 
   def set_shop
