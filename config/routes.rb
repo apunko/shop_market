@@ -20,6 +20,8 @@ Rails.application.routes.draw do
         root to: "categories#index"
       end
 
+      resources :orders, only: :index
+
       root to: "shops#new"
     end
   end

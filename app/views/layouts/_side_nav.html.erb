@@ -1,6 +1,6 @@
 <ul class="nav nav-stacked">
-  <li role="presentation"><a href="#">Shop</a></li>
-  <li role="presentation"><a href="#">Products</a></li>
-  <li role="presentation"><a href="#">Categories</a></li>
-  <li role="presentation"><a href="#">Orders</a></li>
+  <li role="presentation"><%= link_to "Shop", shop_admin_shop_path(@shop) %></li>
+  <li role="presentation"><%= link_to "Products", shop_admin_shop_products_root_path(@shop) %></li>
+  <li role="presentation"><%= link_to "Categories", shop_admin_shop_products_root_path(@shop) %></li>
+  <li role="presentation"><%= link_to "Orders", shop_admin_shop_orders_path(@shop) %></li>
 </ul>
