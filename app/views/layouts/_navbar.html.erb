@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <li><%= link_to "My shop", shop_admin_shops_path %></li>
-        <% if @shop.id != nil %>
+        <% if @shop && @shop.id != nil %>
           <li><%= link_to 'Cart', shop_carts_path(@shop) %></li>
         <% end %>
       </ul>
