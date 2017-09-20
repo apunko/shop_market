@@ -13,7 +13,7 @@
       <tr>
         <td><%= link_to product.title, [@shop, product] %></td>
         <td><%= product.description %></td>
-        <td><%= product.category %></td>
+        <td><%= product.category.title %></td>
         <td><%= link_to "Edit", edit_shop_admin_shop_product_path(@shop, product), class: "btn btn-primary" %></td>
         <td><%= link_to "Destroy", shop_admin_shop_product_path(@shop, product), remote: true, method: :delete, class: "btn btn-danger", data: { confirm: 'Are you sure?' } %></td>
       </tr>

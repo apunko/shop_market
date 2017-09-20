@@ -5,9 +5,7 @@ module SortableTables
     filterrific(
     default_filter_params: { sorted_by: 'title_desc' },
     available_filters: [
-      :sorted_by,
-      :with_category_id,
-      :search_text
+      :sorted_by
       ]
     )
 

@@ -2,6 +2,15 @@ class Product < ApplicationRecord
   include PgSearch
   include SortableTables
   
+  filterrific(
+    default_filter_params: { sorted_by: 'title_desc' },
+    available_filters: [
+      :sorted_by,
+      :with_category_id,
+      :search_text
+    ]
+  )
+
   mount_uploaders :images, ImageUploader
   belongs_to :shop
   belongs_to :category

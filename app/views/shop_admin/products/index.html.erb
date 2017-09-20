@@ -1,18 +1,3 @@
 <h1>Products</h1>
-<div class="filters-container">
-  <%= form_for_filterrific @filterrific do |f| %>
-    <div class="filter">
-      <label>Sorted by</label>
-      <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], class: "form-control") %>
-    </div>
-    <div>
-      <%= link_to(
-        'Reset filters',
-        reset_filterrific_url,
-      ) %>
-    </div>
-
-    <%= render_filterrific_spinner %>
-  <% end %>
-</div>
+<%= render "products/products_filters" %>
 <%= render(partial: 'table', locals: { products: @products }) %>
