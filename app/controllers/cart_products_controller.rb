@@ -1,4 +1,6 @@
 class CartProductsController < ApplicationController
+  include CartsHelper
+  
   before_action :set_shop
   before_action :set_cart, only: [:create, :destroy, :update]
   before_action :set_cart_product, only: :update
