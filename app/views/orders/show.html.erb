@@ -6,9 +6,11 @@
   <h3>Order Products:</h3>
   <ul>
     <% @order.order_products.each do |order_product| %>
-      <span>Product: <%= link_to order_product.product.title, shop_product_path(order_product.shop, order_product.product) %></span>
-      <span> Package: <%= order_product.package.title %></span>
-      <span> Amount: <%= order_product.amount %></span>
+      <li>
+        <span>Product: <%= link_to order_product.product.title, shop_product_path(@order, order_product.product) %></span>
+        <span> Package: <%= order_product.package.title %></span>
+        <span> Amount: <%= order_product.amount %></span>
+      </li>
     <% end %>
   </ul>
 </div>
