@@ -1,0 +1,34 @@
+[1mdiff --git a/app/controllers/cart_products_controller.rb b/app/controllers/cart_products_controller.rb[m
+[1mindex 3f8599d..dfb655b 100644[m
+[1m--- a/app/controllers/cart_products_controller.rb[m
+[1m+++ b/app/controllers/cart_products_controller.rb[m
+[36m@@ -64,7 +64,7 @@[m [mclass CartProductsController < ApplicationController[m
+ [m
+     @cart = get_shop_cart(@shop, current_user)[m
+ [m
+[31m-    if @cart.new_record?[m
+[32m+[m[32m    if current_user && @cart.new_record?[m
+       @cart.save[m
+       session[:shops][@shop.title] = nil[m
+     end[m
+[36m@@ -72,6 +72,7 @@[m [mclass CartProductsController < ApplicationController[m
+ [m
+   def set_cart_product[m
+     @cart_product = @cart.cart_products.find(params[:id])[m
+[32m+[m[32m    binding.pry[m
+   end[m
+ [m
+   def cart_product_params[m
+[1mdiff --git a/app/controllers/carts_controller.rb b/app/controllers/carts_controller.rb[m
+[1mindex f587cd8..1f09e06 100644[m
+[1m--- a/app/controllers/carts_controller.rb[m
+[1m+++ b/app/controllers/carts_controller.rb[m
+[36m@@ -16,7 +16,7 @@[m [mclass CartsController < ApplicationController[m
+   def set_cart[m
+     @cart = get_shop_cart(@shop, current_user)[m
+ [m
+[31m-    if @cart.new_record? [m
+[32m+[m[32m    if current_user && @cart.new_record?[m[41m [m
+       @cart.save[m
+       session[:shops][@shop.title] = nil[m
+     end[m

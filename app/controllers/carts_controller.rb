@@ -16,7 +16,7 @@ class CartsController < ApplicationController
   def set_cart
     @cart = get_shop_cart(@shop, current_user)
 
-    if @cart.new_record? 
+    if current_user && @cart.new_record? 
       @cart.save
       session[:shops][@shop.title] = nil
     end

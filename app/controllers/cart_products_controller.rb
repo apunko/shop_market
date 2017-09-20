@@ -16,10 +16,10 @@ class CartProductsController < ApplicationController
     product = @shop.products.find(params[:cart_product][:product_id])
     package = product.packages.find(params[:cart_product][:package_id])
 
-    if @cart
+    if current_user && @cart
       cart_product = @cart.add_product(product, package, params[:amount])
       if cart_product.save
-        flash[:notice] = "Product was added!"
+        flash[:notice] = "Added to cart!"
         redirect_to(request.referrer || product_path(product))
       else
         flash[:errors] = @cart_product.errors
@@ -64,7 +64,7 @@ class CartProductsController < ApplicationController
 
     @cart = get_shop_cart(@shop, current_user)
 
-    if @cart.new_record?
+    if current_user && @cart.new_record?
       @cart.save
       session[:shops][@shop.title] = nil
     end
