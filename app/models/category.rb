@@ -3,5 +3,5 @@ class Category < ApplicationRecord
 
   belongs_to :shop
   has_many :products
-  paginates_per 5 
+  paginates_per 5
 end

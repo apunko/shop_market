@@ -5,7 +5,9 @@ module SortableTables
     filterrific(
     default_filter_params: { sorted_by: 'title_desc' },
     available_filters: [
-      :sorted_by
+      :sorted_by,
+      :with_category_id,
+      :search_text
       ]
     )
 
@@ -21,6 +23,10 @@ module SortableTables
   end
 
   class_methods do
+    def options_for_select
+      order('LOWER(title)').map { |e| [e.title, e.id] }
+    end
+
     def options_for_sorted_by
       [
         ['Title desc', 'title_desc'],
