@@ -1,6 +1,6 @@
 class CartProductsController < ApplicationController
   include CartsHelper
-  
+
   before_action :set_shop
   before_action :set_cart, only: [:create, :destroy, :update]
   before_action :set_cart_product, only: :update
@@ -32,6 +32,8 @@ class CartProductsController < ApplicationController
       cart_product = CartProduct.new(cart_product_params)
       session[:shops][@shop.title] << cart_product
     end
+
+    redirect_to shop_carts_path
   end
 
   def destroy
