@@ -1,3 +1,6 @@
-<%= @shop.title %>
-<br/>
-<%= @shop.description %>
+<div>
+  <h1><%= @shop.title %></h1>
+  <h4>Desciption: </h4> <%= @shop.description %>
+  <br/>
+  <%= link_to "Go to products", shop_products_path(@shop), class: "btn btn-primary"%>
+</div>
