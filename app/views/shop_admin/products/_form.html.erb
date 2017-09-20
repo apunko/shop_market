@@ -1,7 +1,7 @@
 <%= simple_form_for [:shop_admin, @shop, @product] do |f| %>
   <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.association :category %>
+  <%= f.input :description, input_html: { rows: 5 } %>
+  <%= f.association :category, collection: @shop.categories, include_blank: false %>
   <%= f.file_field :images, multiple: true %>
   <%= f.simple_fields_for :packages do |package| %>
     <%= render 'package_fields', f: package %>
@@ -9,5 +9,5 @@
   <div class="links">
     <%= link_to_add_association 'add package', f, :packages %>
   </div>
-  <%= f.button :submit %>
+  <%= f.submit "Update", class: "btn btn-primary" %>
 <% end %>

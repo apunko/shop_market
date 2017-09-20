@@ -1,0 +1,4 @@
+<% js = escape_javascript(
+  render(partial: 'table', locals: { orders: @orders })
+) %>
+$("#orders-container").html("<%= js %>");
