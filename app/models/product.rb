@@ -8,6 +8,8 @@ class Product < ApplicationRecord
   has_many :packages
   accepts_nested_attributes_for :packages, allow_destroy: true
 
+  paginates_per 10
+
   pg_search_scope :search_full_text, against: [:title, :description]
 
   scope :search_text, lambda { |text|

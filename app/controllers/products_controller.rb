@@ -30,6 +30,6 @@ class ProductsController < ApplicationController
   end
 
   def set_product
-    @product = @shop.products.find(params[:id])
+    @product = @shop.products.includes(:packages).find(params[:id])
   end
 end

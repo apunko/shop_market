@@ -15,7 +15,9 @@ class OrdersController < ApplicationController
         @order.order_products << OrderProduct.new(product: cart_product.product, package: cart_product.package, amount: cart_product.amount)
       end
 
-      @order.save
+      if @order.save
+        cart.cart_products = []
+      end
       
       redirect_to shop_order_path(@shop, @order)
     else

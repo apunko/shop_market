@@ -1,21 +1,20 @@
-<%= @product.title %>
-<br/>
-<%= @product.category.title %>
-<br/>
-<%= @product.description %>
-<br/>
-
-<h2>Packages:</h2>
-<% @product.packages.each do |package| %>
-  <p>
-    <%= package.title %> - <%= package.amount %>
-    <%= render(partial: "cart_products/form", locals: { cart_product: CartProduct.new(product_id: @product.id, package_id: package.id), submit_button_title: "Add to cart" }) %>
-  </p>
-<% end %>
-<div id="thumbs">
-<% @product.images.each do |image| %>
-  <%= link_to image.url do %>
-    <%= image_tag image.url, size: "120x120" %>
-  <% end %> 
-<% end %>
+<div>
+  <h1><%= @product.title %></h1>
+  <h3>Category: <i><%= @product.category.title %></i></h3>
+  <h4>Desciption: </h4> <%= @product.description %>
+  <br/>
+  <h3>Packages:</h3>
+  <% @product.packages.each do |package| %>
+    <div>
+      Name: <%= package.title %>
+      <%= render(partial: "cart_products/form", locals: { cart_product: get_cart_product(@product, package), submit_button_title: "Add to/Update in cart" }) %>
+    </div>
+  <% end %>
+  <div id="thumbs">
+  <% @product.images.each do |image| %>
+    <%= link_to image.url do %>
+      <%= image_tag image.url, size: "120x120" %>
+    <% end %> 
+  <% end %>
+  </div>
 </div>
