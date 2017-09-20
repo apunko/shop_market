@@ -53,6 +53,9 @@ class CartProductsController < ApplicationController
   end
 
   def set_cart
+    session[:shops] ||= {}
+    session[:shops][@shop.title] ||= []
+
     if current_user
       @cart = Cart.find_by(user_id: current_user.id, shop_id: @shop.id)
       unless @cart
@@ -63,9 +66,6 @@ class CartProductsController < ApplicationController
         @cart.save
         session[:shops][@shop.title] = nil
       end 
-    else
-      session[:shops] ||= {}
-      session[:shops][@shop.title] ||= []
     end
   end
 
