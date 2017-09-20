@@ -1,5 +1,5 @@
 <div class="nested-fields">
-  <%= f.input :title %>
-  <%= f.input :amount %>
-  <%= link_to_remove_association "remove package", f %>
+  <%= f.input :title, inline_label: "Package: " %>
+  <%= f.input :amount, inline_label: "Amount: " %>
+  <%= link_to_remove_association "Remove package", f %>
 </div>

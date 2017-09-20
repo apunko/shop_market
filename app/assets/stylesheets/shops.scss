@@ -2,6 +2,20 @@
   width: 50%;
 }
 
-.simple_form.edit_product .form-group{
+.simple_form.edit_product {
   width: 50%;
+
+  .nested-fields div {
+    display: inline-block;
+  }
+
+  #product_images {
+    margin-bottom: 10px;
+  }
+
+  .links {
+    margin-bottom: 5px;
+  }
 }
+
+
