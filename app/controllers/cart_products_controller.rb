@@ -32,10 +32,10 @@ class CartProductsController < ApplicationController
 
       cart_product = CartProduct.new(cart_product_params)
       session[:shops][@shop.title] << cart_product
+      
+      flash[:notice] = "Added to cart!"
+      redirect_to shop_carts_path(@shop)
     end
-
-    flash[:notice] = "Added to cart!"
-    redirect_to shop_carts_path(@shop)
   end
 
   def destroy
