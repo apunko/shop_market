@@ -11,10 +11,16 @@ class ShopAdmin::ProductsController < ApplicationController
     create_params = product_params
     create_params[:shop_id] = params[:shop_id]
     @product = Product.create(create_params)
+
+    if @product
+      redirect_to shop_admin_shop_products_root_path(@shop)
+    end
   end
 
   def update
-    @product.update(product_params)
+    if @product.update(product_params)
+      redirect_to shop_admin_shop_products_root_path(@shop)
+    end
   end
 
   def edit
