@@ -2,7 +2,7 @@ class ShopAdmin::ShopsController < ApplicationController
   before_action :authenticate_user!
   before_action :check_shop_existence, only: [:new, :create]
   before_action :set_shop, only: [:show, :edit, :update]
-
+  before_action :verify_shop_owner, only: [:show, :edit, :update]
   layout "shop_admin"
 
   def show
@@ -42,6 +42,10 @@ class ShopAdmin::ShopsController < ApplicationController
 
   def set_shop
     @shop = Shop.find(params[:id])
+  end
+
+  def verify_shop_owner
+    authorize @shop, :user_owner?
   end
 
   def shop_params

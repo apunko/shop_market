@@ -1,5 +1,6 @@
 class ShopAdmin::ProductsController < ApplicationController
-  before_action :set_shop
+  include ShopAdmin
+
   before_action :set_product, only: [:destroy, :update, :edit]
 
   def index
@@ -40,10 +41,6 @@ class ShopAdmin::ProductsController < ApplicationController
     ) or return
 
     @products = @filterrific.find.includes(:category).page(params[:page])
-  end
-
-  def set_shop
-    @shop = Shop.find(params[:shop_id])
   end
 
   def set_product

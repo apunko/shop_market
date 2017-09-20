@@ -1,7 +1,6 @@
 class ShopAdmin::CategoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_shop
-  before_action :verify_shop_owner
+  include ShopAdmin
+
   before_action :set_category, only: [:destroy, :update, :edit]
   before_action :initialize_table, only: [:index, :update, :create, :destroy]
 
@@ -48,16 +47,8 @@ class ShopAdmin::CategoriesController < ApplicationController
     @categories = @filterrific.find.where(shop_id: @shop.id).page(params[:page])
   end
 
-  def set_shop
-    @shop = Shop.find(params[:shop_id])
-  end
-
   def set_category
     @category = Category.find(params[:id])
-  end
-
-  def verify_shop_owner
-    authorize @shop, :user_owner?
   end
 
   def category_params
