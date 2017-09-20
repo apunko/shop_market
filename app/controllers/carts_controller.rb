@@ -12,24 +12,11 @@ class CartsController < ApplicationController
   end
 
   def set_cart
-    session[:shops] ||= {}
-    session[:shops][@shop.title] ||= []
+    @cart = get_shop_cart(@shop, current_user)
 
-    if current_user
-      @cart = Cart.find_by(user_id: current_user.id, shop_id: @shop.id)
-      unless @cart
-        @cart = Cart.new(user_id: current_user.id, shop_id: @shop.id)
-        session[:shops][@shop.title].each do |cart_product_params|
-          @cart.cart_products << CartProduct.new(cart_product_params)   
-        end
-        @cart.save
-        session[:shops][@shop.title] = nil
-      end 
-    else
-      @cart = Cart.new(shop_id: @shop.id)
-      session[:shops][@shop.title].each do |cart_product_params|
-        @cart.cart_products << CartProduct.new(cart_product_params)  
-      end
+    if @cart.new_record? 
+      @cart.save
+      session[:shops][@shop.title] = nil
     end
   end
 end

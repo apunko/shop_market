@@ -7,7 +7,7 @@
   <% @product.packages.each do |package| %>
     <div>
       Name: <%= package.title %>
-      <%= render(partial: "cart_products/form", locals: { cart_product: get_cart_product(@product, package), submit_button_title: "Add to/Update in cart" }) %>
+      <%= render(partial: "cart_products/form", locals: { cart_product: get_cart_product(@shop, current_user, @product, package), submit_button_title: "Add to/Update in cart" }) %>
     </div>
   <% end %>
   <div id="thumbs">

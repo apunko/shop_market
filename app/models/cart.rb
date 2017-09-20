@@ -6,7 +6,7 @@ class Cart < ApplicationRecord
   def add_product(product, package, amount)
     cart_product = cart_products.find_by(product_id: product.id, package_id: package)
     if cart_product
-      cart_product.amount += amount
+      cart_product.amount = amount
     else
       cart_product = cart_products.build(product_id: product.id, package_id: package.id, amount: amount)
     end
