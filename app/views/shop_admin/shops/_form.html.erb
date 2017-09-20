@@ -1,5 +1,5 @@
 <%= simple_form_for [:shop_admin, @shop] do |f| %>
   <%= f.input :title %>
   <%= f.input :description, input_html: { rows: 8 } %>
-  <%= f.submit "Update", class: "btn btn-primary" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>
