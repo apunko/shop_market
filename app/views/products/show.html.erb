@@ -6,14 +6,14 @@
   <h3>Packages:</h3>
   <% @product.packages.each do |package| %>
     <div>
-      Name: <%= package.title %>
+      Name: <%= "#{package.title}(#{package.amount})" %>
       <%= render(partial: "cart_products/form", locals: { cart_product: get_cart_product(@shop, current_user, @product, package), submit_button_title: "Add to/Update in cart" }) %>
     </div>
   <% end %>
   <div id="thumbs">
   <% @product.images.each do |image| %>
     <%= link_to image.url do %>
-      <%= image_tag image.url, size: "120x120" %>
+      <%= image_tag image.url, size: "180x180" %>
     <% end %> 
   <% end %>
   </div>

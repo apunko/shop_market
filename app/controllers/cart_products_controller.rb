@@ -17,7 +17,7 @@ class CartProductsController < ApplicationController
     package = product.packages.find(params[:cart_product][:package_id])
 
     if current_user && @cart
-      cart_product = @cart.add_product(product, package, params[:amount])
+      cart_product = @cart.add_product(product, package, params[:cart_product][:amount])
       if cart_product.save
         flash[:notice] = "Added to cart!"
         redirect_to(request.referrer || product_path(product))

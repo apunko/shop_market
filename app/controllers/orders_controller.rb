@@ -16,11 +16,16 @@ class OrdersController < ApplicationController
         @order.order_products << OrderProduct.new(product: cart_product.product, package: cart_product.package, amount: cart_product.amount)
       end
 
-      if @order.save
-        cart.cart_products = []
+      begin
+        if @order.save
+          cart.cart_products = []
+        end
+
+        redirect_to shop_order_path(@shop, @order)
+      rescue => ex
+        flash[:alert] = ex.message
+        redirect_to shop_carts_path(@shop)
       end
-      
-      redirect_to shop_order_path(@shop, @order)
     else
       flash[:alert] = "Please, log in to make orders!"
       redirect_to shop_carts_path(@shop)

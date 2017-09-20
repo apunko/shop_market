@@ -7,7 +7,7 @@
   <ul>
     <% @order.order_products.each do |order_product| %>
       <li>
-        <span>Product: <%= link_to order_product.product.title, shop_product_path(@order, order_product.product) %></span>
+        <span>Product: <%= link_to order_product.product.title, shop_product_path(@order.shop, order_product.product) %></span>
         <span> Package: <%= order_product.package.title %></span>
         <span> Amount: <%= order_product.amount %></span>
       </li>
