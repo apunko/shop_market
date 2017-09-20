@@ -75,9 +75,12 @@ to display a collection of resources in an HTML table.
             class: "action-edit",
           ) %></td>
         <% end %>
-        <td>
-          <%= link_to "Block/Unblock", admin_shop_path(resource, shop: { blocked: !resource.blocked }), method: :patch, class: "text-color-red" %>
-        </td>
+
+        <% if valid_action? :block, collection_presenter.resource_name %>
+          <td>
+            <%= link_to "Block/Unblock", block_admin_shop_path(resource, shop: { blocked: !resource.blocked }), method: :patch, class: "text-color-red" %>
+          </td>
+        <% end %>
         <% if valid_action? :destroy, collection_presenter.resource_name %>
           <td><%= link_to(
             t("administrate.actions.destroy"),

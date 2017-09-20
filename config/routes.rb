@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:show]
     resources :products, only: [:show]
-    resources :shops, only: [:show, :index, :update]
+    resources :shops, only: [:show, :index] do
+      patch 'block', on: :member
+    end
 
     root to: "shops#index"
   end

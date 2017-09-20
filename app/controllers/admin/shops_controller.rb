@@ -1,6 +1,6 @@
 module Admin
   class ShopsController < Admin::ApplicationController
-    def update
+    def block
       shop = Shop.find(params[:id])
       shop.update(update_params)
       redirect_to admin_shops_path
